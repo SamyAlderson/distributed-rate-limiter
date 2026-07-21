@@ -1,80 +1,64 @@
-distributed-rate-limiter
-=====================
+# distributed-rate-limiter
+A high-performance, distributed rate limiter for scalable systems
 
-A high-performance, distributed rate limiter for scalable systems.
+## What it does
+This is a Go library for building scalable rate limiting systems. It uses leader election and distributed locking to ensure that rate limits are enforced consistently across multiple nodes. The library is highly configurable, allowing you to set up custom quotas and rate limits for your application.
 
-### What
-
-This project provides a high-performance, distributed rate limiter for scalable systems. It uses leader election and distributed locking to ensure consistent and accurate rate limiting.
-
-### Why
-
-Rate limiting is a critical component of many scalable systems. It prevents abuse and ensures fair access to resources. This project provides a reliable and high-performance solution for rate limiting in distributed systems.
-
-### Install
-
-To install and run this project, follow these steps:
-
-1. Clone the repository using `git clone https://github.com/samy/distributed-rate-limiter.git`
-2. Navigate to the project directory using `cd distributed-rate-limiter`
-3. Install dependencies using `go get`
-4. Run the program using `go run main.go`
-
-### Usage
-
-To use the rate limiter, create a client instance and configure it with the desired quota and timeout. The client will automatically connect to the rate limiter and begin enforcing the quota.
-
+## Installation
+To use this library, run the following command:
+```bash
+go get github.com/SamyAlderson/distributed-rate-limiter
+```
+## Usage
+To use the distributed rate limiter, import the library and create a new instance:
 ```go
-import "github.com/samy/distributed-rate-limiter/client"
+import (
+	"github.com/SamyAlderson/distributed-rate-limiter"
+)
 
-// Create a new client instance
-client := client.NewClient("localhost:2379", 100, 1*time.Second)
-
-// Increment the rate limiter
-err := client.Increment()
-if err != nil {
-    log.Fatal(err)
+func main() {
+	limiter := distributedrate.NewLimiter("my-namespace", 10, time.Minute)
+	// use the limiter to rate limit requests
 }
 ```
+## Building from source
+To build the library from source, run the following command:
+```bash
+go build github.com/SamyAlderson/distributed-rate-limiter
+```
+## Running tests
+To run the tests, use the following command:
+```bash
+go test github.com/SamyAlderson/distributed-rate-limiter
+```
+## Project structure
+* `cmd/`: contains the main executable
+* `pkg/`: contains the rate limiter package
+* `test/`: contains the test suite
+* `main.go`: the main entry point for the library
+* `limiter.go`: implements the rate limiter logic
+* `leader_election.go`: implements leader election
+* `distributed_lock.go`: implements distributed locking
+* `config.go`: defines the config structure
+* `tests.go`: contains the test suite
 
-### Build from Source
+## License
+Copyright (c) 2026 SamyAlderson
 
-To build the project from source, run the following commands:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-1. `go build main.go`
-2. `go build rate_limiter.go`
-3. `go build client.go`
-4. `go build config.go`
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-### Project Structure
-
-The project is structured as follows:
-
-* `go.mod` and `go.sum` contain the Go module declaration and checksums
-* `main.go` is the main entry point of the program
-* `rate_limiter.go` contains the rate limiter implementation
-* `client.go` contains the client for interacting with the rate limiter
-* `config.go` contains the configuration for the rate limiter
-* `test_client.go` and `test_rate_limiter.go` contain unit tests for the client and rate limiter respectively
-* `Makefile` contains the build script for the project
-* `.gitignore` contains the git ignore file for the project
-
-### License
-
-This project is licensed under the Apache License 2.0.
-
-### Dependencies
-
-The project depends on the following libraries:
-
-* `github.com/coreos/etcd/etcdclient` for leader election and distributed locking
-* `github.com/sirupsen/logrus` for logging
-
-### Features
-
-The project provides the following features:
-
-* Leader election
-* Distributed locking
-* High-performance rate limiting
-* Configurable quotas
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
