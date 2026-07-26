@@ -1,34 +1,30 @@
-/.gitignore
+# .gitignore
 
-*~*
-*.log
-*.lock
-*.cache
-*.bak
-*.swp
-*.tmp
-go.sum
-go.mod
+# ignore go build files
+*.go.o
+*.go.p
+*.go.s
+
+# ignore go test files
+*_test.go
+*_testmain.go
+
+# ignore go vet files
+*_test.go
+*_testmain.go
+
+# ignore vendor directory
+vendor/
+
+# ignore node_modules directory
 node_modules/
+
+# ignore coverage directory
 coverage/
-dist/
-*.o
-*.d
-*.gch
-*.pyc
-*.class
-*.exe
-*.dll
-*.so
-*.dylib
-*.a
-*.lib
-*.obj
-*.lo
-*.o*
 
-# Ignore etcd logs
-*etcd*/*.log
+# ignore log files
+*.log
 
-# Ignore etcd data directory
-*.etcd*
+# ignore docker files
+Dockerfile
+docker-compose.yml
