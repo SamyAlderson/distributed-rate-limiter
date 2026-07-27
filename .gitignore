@@ -1,17 +1,35 @@
-# .gitignore
-# ignore node_modules and vendor directories
-node_modules/
-vendor/
-
-# ignore .env files
+# ignore .env file
 .env
-.env.local
 
-# ignore compiled assets
+# ignore node_modules and yarn.lock
+node_modules/
+yarn.lock
+
+# ignore IDE files
+.idea/
+.vscode/
+
+# ignore compiled files
+build/
 dist/
 
-# ignore go build files
-*.go~
+# ignore Docker files
+docker-compose.yml
+docker-compose.yaml
+docker/
+.DS_Store
+Thumbs.db
 
-# ignore go test files
-*_test.go
+# ignore macOS files
+.DS_Store
+ehthumbs.db
+Thumbs.db
+
+# ignore Windows files
+Thumbs.db
+ehthumbs.db
+$RECYCLE.BIN/
+ehthumbs.db
+
+# ignore Visual Studio Code files
+.vscode/
