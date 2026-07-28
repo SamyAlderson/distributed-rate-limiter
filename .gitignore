@@ -1,35 +1,20 @@
-# ignore .env file
-.env
-
+# .gitignore
 # ignore node_modules and yarn.lock
 node_modules/
 yarn.lock
 
-# ignore IDE files
+# ignore build artifacts
+dist/
+
+# ignore IDE config files
 .idea/
 .vscode/
 
-# ignore compiled files
-build/
-dist/
-
-# ignore Docker files
+# ignore docker stuff
 docker-compose.yml
-docker-compose.yaml
-docker/
-.DS_Store
-Thumbs.db
+docker-compose.override.yml
+docker-compose.local.yml
 
-# ignore macOS files
-.DS_Store
-ehthumbs.db
-Thumbs.db
-
-# ignore Windows files
-Thumbs.db
-ehthumbs.db
-$RECYCLE.BIN/
-ehthumbs.db
-
-# ignore Visual Studio Code files
-.vscode/
+# ignore other stuff
+*.log
+*.tmp
